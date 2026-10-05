@@ -1,0 +1,46 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pypi-version-bisect"
+version = "0.1.0"
+description = "Binary-search a PyPI package's release history to find the first-affected, last-affected, and fixed version for a vulnerability."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { file = "LICENSE" }
+authors = [{ name = "krc7169", email = "krc7169@gmail.com" }]
+keywords = ["pypi", "vulnerability", "version", "bisect", "cve", "security", "semver"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Topic :: Security",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+dependencies = ["requests>=2.20"]
+
+[project.urls]
+Homepage = "https://github.com/rahulreddykarne/pypi-version-bisect"
+Repository = "https://github.com/rahulreddykarne/pypi-version-bisect"
+Issues = "https://github.com/rahulreddykarne/pypi-version-bisect/issues"
+Changelog = "https://github.com/rahulreddykarne/pypi-version-bisect/releases"
+
+[project.scripts]
+pypi-version-bisect = "pypi_version_bisect.cli:main"
+
+[project.optional-dependencies]
+dev = ["pytest>=7", "build", "twine"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/pypi_version_bisect"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src/pypi_version_bisect", "README.md", "LICENSE", "tests"]
